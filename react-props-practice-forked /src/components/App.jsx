@@ -4,6 +4,19 @@ import Card from "./Card";
 import contacts from "../contacts";
 import Avatar from "./Avatar";
 
+
+const createCard = (contact) => {
+  return (<Card
+    key={contact.id}
+    id={contact.id}
+    name={contact.name}
+    image={contact.imgURL}
+    phone={contact.phone}
+    email={contact.email}
+  />
+  )
+};
+
 const App = () => {
   console.log(contacts)
   return (
@@ -12,7 +25,8 @@ const App = () => {
       <Avatar
         img="https://pbs.twimg.com/profile_images/1263370301678555137/16NYkZv4_400x400.jpg"
       />
-      <Card
+      {contacts.map(createCard)}
+      {/* <Card
         name={contacts[0].name}
         image={contacts[0].imgURL}
         phone={contacts[0].phone}
@@ -29,7 +43,7 @@ const App = () => {
         image={contacts[2].imgURL}
         phone={contacts[2].phone}
         email={contacts[2].email}
-      />
+      /> */}
     </div>
   );
 }
