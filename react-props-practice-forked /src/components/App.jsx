@@ -1,13 +1,17 @@
 import React from "react";
 
 import Card from "./Card";
-import contacts from "../contacts"
+import contacts from "../contacts";
+import Avatar from "./Avatar";
 
 const App = () => {
   console.log(contacts)
   return (
     <div>
       <h1 className="heading">My Contacts</h1>
+      <Avatar
+        img="https://pbs.twimg.com/profile_images/1263370301678555137/16NYkZv4_400x400.jpg"
+      />
       <Card
         name={contacts[0].name}
         image={contacts[0].imgURL}
