@@ -1,12 +1,17 @@
 import React from "react";
+import Confirm from './Confirm';
 
-function Form() {
+function Form(props) {
   return (
     <form className="form">
       <input type="text" placeholder="Username" />
       <input type="password" placeholder="Password" />
-      <input type="password" placeholder="Confirm Password" />
-      <button type="submit">Register</button>
+      <Confirm 
+        userIsRegistered = {props.userIsRegistered}
+      />
+      <button type="submit">
+        {props.userIsRegistered ? "Login" : "Register"}
+      </button>
     </form>
   );
 }
