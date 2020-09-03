@@ -1,4 +1,4 @@
-const { ModuleKind } = require("typescript");
+
 
 const cars = [
   {
