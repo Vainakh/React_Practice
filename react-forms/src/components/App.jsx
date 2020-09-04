@@ -1,17 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 
 function App() {
 
+  const [name, setName] = useState("");
+  const [headingText, setHeading] = useState("");
 
-  const handleChange = () => {
-    console.log("Changed!");
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setName(event.target.value);
   };
+
+  const handleClick = () => {
+   setHeading(name);
+  };
+
   
   return (
     <div className="container">
-      <h1>Hello </h1>
-      <input onChange={} type="text" placeholder="What's your name?" />
-      <button>Submit</button>
+      <h1>Hello {headingText}</h1>
+      <input 
+      onChange={handleChange} 
+      type="text" 
+      placeholder="What's your name?" 
+      value={name}
+      />
+      <button onClick={handleClick}>Submit</button>
     </div>
   );
 }
