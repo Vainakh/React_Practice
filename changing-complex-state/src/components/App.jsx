@@ -2,45 +2,46 @@ import React, {useState} from 'react';
 
 function App() {
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [headingFText, setFHeading] = useState("");
-  const [headingLText, setLHeading] = useState("");
+  const [fullName, setFullName] = useState({
+    fName: "",
+    lName: ""
+  });
 
+  const handleChange = (event) => {
+    const {value, name} = event.target;
 
-  const handleFChange = (event) => { 
-    setFirstName(event.target.value);
+    setFullName((prevValue) => {
+      if (name === "fName"){
+        return {
+          fName: value,
+          lName: prevValue.lName
+        } 
+      } else if (name === "lName"){
+        return {
+          lName: value,
+          fName: prevValue.fName
+        }
+      }
+    })
   };
-
-  const handleLChange = (event) => {
-    setLastName(event.target.value);
-  }
-
-
-  const handleClick = (event) => {
-    setFHeading(firstName);
-    setLHeading(lastName);
-    event.preventDefault();
-  };
-
 
   return (
     <div className="container">
-      <h1>Hello {headingFText} {" "} {headingLText}</h1>
+      <h1>Hello {fullName.fName} {" "} {fullName.lName}</h1>
       <form>
         <input 
-        onChange={handleFChange} 
+        onChange={handleChange} 
         name="fName" 
         placeholder="First Name" 
-        value={firstName}
+        value={fullName.firstName}
         />
         <input 
-        onChange={handleLChange}
+        onChange={handleChange}
         name="lName" 
         placeholder="Last Name" 
-        value={lastName}
+        value={fullName.lastName}
         />
-        <button onClick={handleClick}>Submit</button>
+        <button>Submit</button>
       </form>
     </div>
   );
