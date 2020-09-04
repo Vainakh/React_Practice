@@ -11,25 +11,10 @@ function App() {
     const { name, value } = event.target;
 
     setContact(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value
-        };
-      }
+      return {
+        ...prevValue,
+        [name]: value
+      } 
     });
   }
 
@@ -65,3 +50,23 @@ function App() {
 }
 
 export default App;
+
+// const citrus = ["orange", "mandarin", "lemon"];
+// const fruit = ["apple", "qiwi", "pear"];
+// const everything = [...fruit, ...citrus];
+// console.log(everything);
+
+
+// const agent = {
+//   fName: "James",
+//   lName: "Bond",
+//   occupation: "Special Agent"
+// }
+
+// const mission = {
+//   country: "GB",
+//   agency: "MI 6",
+//   ...agent
+// }
+
+// console.log(mission);
